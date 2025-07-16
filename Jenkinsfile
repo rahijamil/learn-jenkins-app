@@ -5,7 +5,7 @@ pipeline {
         stage('Hello') {
             steps {
                 sh '''
-                    echo "Without Docker"
+                    echo "Hello"
                 '''
             }
         }
