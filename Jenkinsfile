@@ -1,11 +1,14 @@
 pipeline {
   agent any
+
   stages {
-    stage('Clean Workspace') {
+    stage('Checkout') {
       steps {
-        deleteDir()
+        cleanWs()
+        checkout scm
       }
     }
+
     stage('Build') {
       agent {
         docker {
@@ -18,6 +21,7 @@ pipeline {
       }
       steps {
         sh '''
+          ls -la
           rm -rf node_modules
           npm ci
           npm run build
